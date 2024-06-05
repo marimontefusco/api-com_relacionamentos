@@ -1,5 +1,7 @@
 package com.api.endereco.model;
 
+import com.api.endereco.Dto.UsuarioDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,4 +29,22 @@ public class Endereco {
 
     @Column(name = "Número")
     private int numero;
+
+    @ManyToOne(cascade = CascadeType.ALL) //muitos enderecos Um usuario
+    @JoinColumn(name = "usuario_id") //chave estrangeira
+    //    @JsonIgnore
+    private Usuario usuario;
+
+    public Endereco(UsuarioDto usuarioDto) {
+        this.cep = usuarioDto.getCep();
+        this.rua = usuarioDto.getRua();
+        this.numero = usuarioDto.getNumero();
+    }
+
+    //Mét mostra id do usuario daquele endereço -> gambiarra!!
+    public Long getUsuario() {
+
+        return usuario.getId();
+    }
+
 }

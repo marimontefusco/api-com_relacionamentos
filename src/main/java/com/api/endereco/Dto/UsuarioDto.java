@@ -10,6 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioDto {
-
     private String nome;
+    private String cep;
+    private String rua;
+    private int numero;
+
 }
