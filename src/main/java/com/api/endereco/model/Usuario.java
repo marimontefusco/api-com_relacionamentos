@@ -19,6 +19,7 @@ public class Usuario {
     @Column(name = "id_usuario")
     private Long id;
 
+    @Column(name = "Nome")
     private String nome;
 
 }
